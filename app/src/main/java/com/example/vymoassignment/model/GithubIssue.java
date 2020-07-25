@@ -1,10 +1,31 @@
 package com.example.vymoassignment.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.google.gson.annotations.SerializedName;
+
+@Entity
 public class GithubIssue {
+    @PrimaryKey
+    @SerializedName("id")
+    private long issueId;
+    @SerializedName("title")
     private String pullTitle;
+    @SerializedName("number")
     private String prNumber;
+    @SerializedName("state")
     private String pullStatus;
+    @SerializedName("created_at")
     private String created;
+
+    public long getIssueId() {
+        return issueId;
+    }
+
+    public void setIssueId(long issueId) {
+        this.issueId = issueId;
+    }
 
     public String getPullTitle() {
         return pullTitle;

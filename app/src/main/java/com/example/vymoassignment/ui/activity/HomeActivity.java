@@ -13,8 +13,8 @@ import com.example.vymoassignment.ui.fragment.IssueListFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private static final String ISSUE_TYPE_1 = "Open";
-    private static final String ISSUE_TYPE_2 = "Closed";
+    private static final String ISSUE_TYPE_1 = "open";
+    private static final String ISSUE_TYPE_2 = "closed";
 
     private ActivityHomeBinding activityHomeBinding;
 
