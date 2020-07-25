@@ -16,7 +16,9 @@ import com.example.vymoassignment.R;
 import com.example.vymoassignment.adapter.GithubIssueRecycleAdapter;
 import com.example.vymoassignment.custom.VerticalSpaceItemDecoration;
 import com.example.vymoassignment.databinding.FragmentIssueListBinding;
+import com.example.vymoassignment.enums.GithubIssueType;
 import com.example.vymoassignment.model.GithubIssue;
+import com.example.vymoassignment.model.GithubRepoDetails;
 import com.example.vymoassignment.util.Resource;
 import com.example.vymoassignment.viewmodel.IssueListFragmentViewModel;
 import com.example.vymoassignment.viewmodel.IssueListFragmentViewModelFactory;
@@ -28,19 +30,23 @@ import java.util.Objects;
 
 public class IssueListFragment extends Fragment {
 
-    private static final String ISSUE_STATUS = "issue_status";
-    private String issueStatus;
+    private static final String ISSUE_TYPE = "issue_status";
+    private static final String GITHUB_REPO_DETAILS = "github_repo_details";
     private FragmentIssueListBinding fragmentBinding;
     private IssueListFragmentViewModel fragmentViewModel;
+    private GithubRepoDetails githubRepoDetails;
+    private GithubIssueType githubIssueType;
 
     public IssueListFragment() {
         // Required empty public constructor
     }
 
-    public static IssueListFragment newInstance(String issueStatus) {
+    public static IssueListFragment newInstance(GithubRepoDetails githubRepoDetails,
+                                                GithubIssueType githubIssueType) {
         IssueListFragment fragment = new IssueListFragment();
         Bundle args = new Bundle();
-        args.putString(ISSUE_STATUS, issueStatus);
+        args.putSerializable(ISSUE_TYPE, githubIssueType);
+        args.putParcelable(GITHUB_REPO_DETAILS, githubRepoDetails);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,7 +55,8 @@ public class IssueListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            issueStatus = getArguments().getString(ISSUE_STATUS);
+            githubIssueType = (GithubIssueType) getArguments().getSerializable(ISSUE_TYPE);
+            githubRepoDetails = getArguments().getParcelable(GITHUB_REPO_DETAILS);
         }
     }
 
@@ -81,7 +88,7 @@ public class IssueListFragment extends Fragment {
     }
 
     private void updateUiState() {
-        fragmentViewModel.getIssues("prestodb", "presto", issueStatus).observe(
+        fragmentViewModel.getIssues(githubRepoDetails, githubIssueType).observe(
                 this,
                 viewState -> {
                     if (viewState instanceof Resource.Loading) {

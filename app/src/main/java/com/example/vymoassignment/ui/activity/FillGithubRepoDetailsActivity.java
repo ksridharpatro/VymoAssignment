@@ -1,5 +1,6 @@
 package com.example.vymoassignment.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.vymoassignment.R;
 import com.example.vymoassignment.databinding.ActivityFillGithubRepoDetailsBinding;
+import com.example.vymoassignment.util.AppConstants;
 import com.example.vymoassignment.viewmodel.FillGithubRepoDetailsActivityViewModel;
 import com.example.vymoassignment.viewmodel.FillGithubRepoDetailsActivityViewModel.ViewState;
 
@@ -30,7 +32,10 @@ public class FillGithubRepoDetailsActivity extends AppCompatActivity {
     private void onSubmitClick() {
         ViewState viewState = activityViewModel.getViewState();
         if (viewState instanceof ViewState.Success) {
-            Toast.makeText(this, "Success", Toast.LENGTH_LONG).show();
+            Intent homeActivityIntent = new Intent(this, HomeActivity.class);
+            homeActivityIntent.putExtra(AppConstants.IntentKey.GITHUB_REPO_DETAILS,
+                    activityViewModel.getGithubRepoDetails());
+            startActivity(homeActivityIntent);
         } else if (viewState instanceof ViewState.Error) {
             Toast.makeText(this,
                     ((ViewState.Error) viewState).getErrorMessage(),

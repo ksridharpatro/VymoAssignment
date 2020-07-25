@@ -3,7 +3,9 @@ package com.example.vymoassignment.repository;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.vymoassignment.enums.GithubIssueType;
 import com.example.vymoassignment.model.GithubIssue;
+import com.example.vymoassignment.model.GithubRepoDetails;
 import com.example.vymoassignment.network.GithubIssuesWebservice;
 import com.example.vymoassignment.network.RetrofitNetworkClient;
 import com.example.vymoassignment.util.Resource;
@@ -20,17 +22,17 @@ public class GithubIssueRepository {
     private GithubIssuesWebservice githubIssuesWebservice =
             RetrofitNetworkClient.getRetrofitInstance().create(GithubIssuesWebservice.class);
 
-    public LiveData<Resource<List<GithubIssue>>> getIssues(
-            String orgName,
-            String repoName,
-            String state) {
+    public LiveData<Resource<List<GithubIssue>>> getIssues(GithubRepoDetails githubRepoDetails,
+                                                           GithubIssueType githubIssueType) {
 
         final MutableLiveData<Resource<List<GithubIssue>>> resultState = new MutableLiveData<>();
         resultState.postValue(new Resource.Loading<>());
         executor.execute(() -> {
             try {
-                Response<List<GithubIssue>> response =
-                        githubIssuesWebservice.getGithubIssues(orgName, repoName, state).execute();
+                Response<List<GithubIssue>> response = githubIssuesWebservice.getGithubIssues(
+                        githubRepoDetails.getOwnerName(),
+                        githubRepoDetails.getRepoName(),
+                        githubIssueType.getTypeString()).execute();
                 resultState.postValue(new Resource.Success<>(response.body()));
             } catch (IOException e) {
                 resultState.postValue(new Resource.Error<>(e.getMessage()));

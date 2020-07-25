@@ -5,7 +5,9 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.vymoassignment.enums.GithubIssueType;
 import com.example.vymoassignment.model.GithubIssue;
+import com.example.vymoassignment.model.GithubRepoDetails;
 import com.example.vymoassignment.repository.GithubIssueRepository;
 import com.example.vymoassignment.util.Resource;
 
@@ -19,11 +21,9 @@ public class IssueListFragmentViewModel extends ViewModel {
 
     }
 
-    public LiveData<Resource<List<GithubIssue>>> getIssues(
-            String orgName,
-            String repoName,
-            String state) {
+    public LiveData<Resource<List<GithubIssue>>> getIssues(GithubRepoDetails githubRepoDetails,
+                                                           GithubIssueType githubIssueType) {
 
-        return githubIssueRepository.getIssues(orgName, repoName, state);
+        return githubIssueRepository.getIssues(githubRepoDetails, githubIssueType);
     }
 }
