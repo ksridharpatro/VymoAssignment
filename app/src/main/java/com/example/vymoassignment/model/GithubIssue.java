@@ -18,6 +18,15 @@ public class GithubIssue {
     private String pullStatus;
     @SerializedName("created_at")
     private String created;
+    private String repoId;
+
+    public String getRepoId() {
+        return repoId;
+    }
+
+    public void setRepoId(String repoId) {
+        this.repoId = repoId;
+    }
 
     public long getIssueId() {
         return issueId;

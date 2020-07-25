@@ -26,7 +26,6 @@ import com.example.vymoassignment.viewmodel.IssueListFragmentViewModelFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Objects;
 
 public class IssueListFragment extends Fragment {
 
@@ -71,12 +70,9 @@ public class IssueListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fragmentViewModel = new ViewModelProvider(
-                requireActivity(),
-                new IssueListFragmentViewModelFactory(
-                        Objects.requireNonNull(getContext()).getApplicationContext()))
+        fragmentViewModel = new ViewModelProvider(requireActivity(),
+                new IssueListFragmentViewModelFactory(getActivity().getApplication()))
                 .get(IssueListFragmentViewModel.class);
-
         setupRecyclerView();
         updateUiState();
     }

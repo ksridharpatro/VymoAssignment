@@ -1,6 +1,6 @@
 package com.example.vymoassignment.viewmodel;
 
-import android.content.Context;
+import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
@@ -8,9 +8,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class IssueListFragmentViewModelFactory implements ViewModelProvider.Factory {
 
-    private Context applicationContext;
+    private Application applicationContext;
 
-    public IssueListFragmentViewModelFactory(Context applicationContext) {
+    public IssueListFragmentViewModelFactory(Application applicationContext) {
         this.applicationContext = applicationContext;
     }
 

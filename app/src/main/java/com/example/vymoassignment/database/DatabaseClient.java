@@ -10,7 +10,9 @@ public class DatabaseClient {
 
     public static AppDatabase getAppDatabaseInstance(Context applicationContext) {
         if (appDatabase == null) {
-            appDatabase = Room.databaseBuilder(applicationContext, AppDatabase.class, DATABASE_NAME).build();
+            appDatabase = Room.databaseBuilder(applicationContext, AppDatabase.class, DATABASE_NAME)
+                    .fallbackToDestructiveMigration()
+                    .build();
         }
         return appDatabase;
     }

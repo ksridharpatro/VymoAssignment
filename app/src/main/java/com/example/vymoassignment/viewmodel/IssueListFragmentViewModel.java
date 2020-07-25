@@ -1,9 +1,10 @@
 package com.example.vymoassignment.viewmodel;
 
-import android.content.Context;
+import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.vymoassignment.enums.GithubIssueType;
 import com.example.vymoassignment.model.GithubIssue;
@@ -13,17 +14,16 @@ import com.example.vymoassignment.util.Resource;
 
 import java.util.List;
 
-public class IssueListFragmentViewModel extends ViewModel {
+public class IssueListFragmentViewModel extends AndroidViewModel {
 
     private GithubIssueRepository githubIssueRepository = new GithubIssueRepository();
 
-    public IssueListFragmentViewModel(Context applicationContext) {
-
+    public IssueListFragmentViewModel(@NonNull Application application) {
+        super(application);
     }
 
     public LiveData<Resource<List<GithubIssue>>> getIssues(GithubRepoDetails githubRepoDetails,
                                                            GithubIssueType githubIssueType) {
-
         return githubIssueRepository.getIssues(githubRepoDetails, githubIssueType);
     }
 }
