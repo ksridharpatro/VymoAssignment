@@ -1,38 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="15dp"
-    tools:context=".ui.activity.FillGithubRepoDetailsActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/ownerName"
+    <data>
+
+        <variable
+            name="activityViewModel"
+            type="com.example.vymoassignment.viewmodel.FillGithubRepoDetailsActivityViewModel" />
+
+        <variable
+            name="submitClickRunnable"
+            type="Runnable" />
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:hint="@string/text_github_owner_name"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:padding="10dp" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="15dp"
+        tools:context=".ui.activity.FillGithubRepoDetailsActivity">
 
-    <EditText
-        android:id="@+id/repoName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edit_text_bg"
-        android:hint="@string/text_repo_name"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:padding="10dp" />
+        <EditText
+            android:id="@+id/ownerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_bg"
+            android:hint="@string/text_github_owner_name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:padding="10dp"
+            android:text="@={activityViewModel.githubRepoDetails.ownerName}" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/action_submit" />
+        <EditText
+            android:id="@+id/repoName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="@string/text_repo_name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:padding="10dp"
+            android:text="@={activityViewModel.githubRepoDetails.repoName}" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:onClick="@{() -> submitClickRunnable.run()}"
+            android:text="@string/action_submit" />
+
+    </LinearLayout>
+</layout>

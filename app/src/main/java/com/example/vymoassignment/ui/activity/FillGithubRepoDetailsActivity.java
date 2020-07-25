@@ -1,16 +1,40 @@
 package com.example.vymoassignment.ui.activity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.vymoassignment.R;
+import com.example.vymoassignment.databinding.ActivityFillGithubRepoDetailsBinding;
+import com.example.vymoassignment.viewmodel.FillGithubRepoDetailsActivityViewModel;
+import com.example.vymoassignment.viewmodel.FillGithubRepoDetailsActivityViewModel.ViewState;
 
 public class FillGithubRepoDetailsActivity extends AppCompatActivity {
+
+    private FillGithubRepoDetailsActivityViewModel activityViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fill_github_repo_details);
+        ActivityFillGithubRepoDetailsBinding activityBinding = DataBindingUtil.setContentView(
+                this, R.layout.activity_fill_github_repo_details);
+        activityViewModel = ViewModelProviders.of(this)
+                .get(FillGithubRepoDetailsActivityViewModel.class);
+        activityBinding.setActivityViewModel(activityViewModel);
+        activityBinding.setSubmitClickRunnable(this::onSubmitClick);
+    }
+
+    private void onSubmitClick() {
+        ViewState viewState = activityViewModel.getViewState();
+        if (viewState instanceof ViewState.Success) {
+            Toast.makeText(this, "Success", Toast.LENGTH_LONG).show();
+        } else if (viewState instanceof ViewState.Error) {
+            Toast.makeText(this,
+                    ((ViewState.Error) viewState).getErrorMessage(),
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }
