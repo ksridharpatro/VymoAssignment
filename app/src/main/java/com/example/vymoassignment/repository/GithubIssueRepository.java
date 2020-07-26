@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.vymoassignment.VymoAssignmentApplication;
 import com.example.vymoassignment.database.DatabaseClient;
 import com.example.vymoassignment.database.GithubIssueReqEntity;
 import com.example.vymoassignment.database.GithubIssuesDao;
@@ -18,19 +19,18 @@ import com.example.vymoassignment.util.Resource;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class GithubIssueRepository {
     private static final long REFRESH_TIME_OUT_MILLIS = 5 * 60 * 1000;
-    private final Executor executor;
+    private final ThreadPoolExecutor executor;
     private final GithubIssuesWebservice githubIssuesWebservice;
     private final GithubIssuesDao githubIssuesDao;
     private final GithubRepoDao githubRepoDao;
     private final MutableLiveData<Resource<List<GithubIssue>>> resultState;
 
     public GithubIssueRepository(Application application) {
-        this.executor = Executors.newFixedThreadPool(10);
+        this.executor = ((VymoAssignmentApplication) application).getThreadPoolExecutor();
         this.githubIssuesWebservice =
                 RetrofitNetworkClient.getRetrofitInstance().create(GithubIssuesWebservice.class);
         this.githubIssuesDao = DatabaseClient.getAppDatabaseInstance(application).githubIssuesDao();
