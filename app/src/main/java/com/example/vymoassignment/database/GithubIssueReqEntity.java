@@ -10,8 +10,8 @@ import org.jetbrains.annotations.NotNull;
 public class GithubIssueReqEntity {
     @PrimaryKey
     @NonNull
-    private String repoId;
-    private long fetchTimestamp;
+    private final String repoId;
+    private final long fetchTimestamp;
 
     public GithubIssueReqEntity(@NotNull String repoId, long fetchTimestamp) {
         this.repoId = repoId;

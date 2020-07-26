@@ -16,11 +16,11 @@ public class VymoAssignmentApplication extends Application {
      * Gets the number of available cores
      * (not always the same as the maximum number of cores)
      */
-    private static int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
+    private static final int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
     // Instantiates the queue of Runnables as a LinkedBlockingQueue
     private final BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>();
     // Creates a thread pool manager
-    private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+    private final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
             NUMBER_OF_CORES,       // Initial pool size
             NUMBER_OF_CORES,       // Max pool size
             KEEP_ALIVE_TIME,
@@ -30,10 +30,5 @@ public class VymoAssignmentApplication extends Application {
 
     public ThreadPoolExecutor getThreadPoolExecutor() {
         return threadPoolExecutor;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
     }
 }

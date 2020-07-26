@@ -11,8 +11,4 @@ public enum GithubIssueType {
     public String getTypeString() {
         return typeString;
     }
-
-    public void setTypeString(String typeString) {
-        this.typeString = typeString;
-    }
 }
