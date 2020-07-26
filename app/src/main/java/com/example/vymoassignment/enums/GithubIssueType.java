@@ -2,7 +2,7 @@ package com.example.vymoassignment.enums;
 
 public enum GithubIssueType {
     OPEN("open"), CLOSED("closed");
-    private String typeString;
+    private final String typeString;
 
     GithubIssueType(String typeString) {
         this.typeString = typeString;
