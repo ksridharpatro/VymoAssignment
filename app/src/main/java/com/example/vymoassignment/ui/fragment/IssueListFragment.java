@@ -71,7 +71,7 @@ public class IssueListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fragmentViewModel = new ViewModelProvider(requireActivity(),
+        fragmentViewModel = new ViewModelProvider(this,
                 new IssueListFragmentViewModelFactory(Objects.requireNonNull(getActivity()).getApplication()))
                 .get(IssueListFragmentViewModel.class);
         setupRecyclerView();

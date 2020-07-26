@@ -16,8 +16,6 @@ import com.example.vymoassignment.util.AppConstants;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private static final String ISSUE_TYPE_1 = "open";
-    private static final String ISSUE_TYPE_2 = "closed";
     private ActivityHomeBinding activityHomeBinding;
     private GithubRepoDetails githubRepoDetails;
 
@@ -39,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(IssueListFragment.newInstance(githubRepoDetails,
                 GithubIssueType.OPEN), GithubIssueType.OPEN.getTypeString());
         viewPagerAdapter.addFragment(IssueListFragment.newInstance(githubRepoDetails,
-                GithubIssueType.CLOSED), ISSUE_TYPE_2);
+                GithubIssueType.CLOSED), GithubIssueType.CLOSED.getTypeString());
         activityHomeBinding.viewpager.setAdapter(viewPagerAdapter);
     }
 }

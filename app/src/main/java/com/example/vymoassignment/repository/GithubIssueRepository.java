@@ -65,7 +65,8 @@ public class GithubIssueRepository {
             issuesFromNetWork = githubIssuesWebservice.getGithubIssues(
                     githubRepoDetails.getOwnerName(),
                     githubRepoDetails.getRepoName(),
-                    githubIssueType.getTypeString()).execute().body();
+                    githubIssueType.getTypeString())
+                    .execute().body();
             long fetchedTimeStump = System.currentTimeMillis();
             if (issuesFromNetWork != null) {
                 for (GithubIssue githubIssue : issuesFromNetWork) {
@@ -94,7 +95,7 @@ public class GithubIssueRepository {
         GithubIssueReqEntity githubIssueReqEntity =
                 githubRepoDao.getRepoById(generateIssueReqId(githubRepoDetails, githubIssueType));
         return githubIssueReqEntity != null &&
-                timeOut(githubIssueReqEntity.getFetchTimestamp());
+                !timeOut(githubIssueReqEntity.getFetchTimestamp());
     }
 
     private boolean timeOut(long lastFetchTimeStump) {
