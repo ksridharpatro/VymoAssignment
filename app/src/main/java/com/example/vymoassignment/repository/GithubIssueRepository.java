@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class GithubIssueRepository {
-    private static final long REFRESH_TIME_OUT_MILLIS = 5 * 60 * 1000;
+    private static final long REFRESH_TIME_OUT_MILLIS = 30 * 60 * 1000;
     private final ThreadPoolExecutor executor;
     private final GithubIssuesWebservice githubIssuesWebservice;
     private final GithubIssuesDao githubIssuesDao;
