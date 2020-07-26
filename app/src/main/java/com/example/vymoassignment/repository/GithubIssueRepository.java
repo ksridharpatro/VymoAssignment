@@ -23,11 +23,11 @@ import java.util.concurrent.Executors;
 
 public class GithubIssueRepository {
     private static final long REFRESH_TIME_OUT_MILLIS = 5 * 60 * 1000;
-    private Executor executor;
-    private GithubIssuesWebservice githubIssuesWebservice;
-    private GithubIssuesDao githubIssuesDao;
-    private GithubRepoDao githubRepoDao;
-    private MutableLiveData<Resource<List<GithubIssue>>> resultState;
+    private final Executor executor;
+    private final GithubIssuesWebservice githubIssuesWebservice;
+    private final GithubIssuesDao githubIssuesDao;
+    private final GithubRepoDao githubRepoDao;
+    private final MutableLiveData<Resource<List<GithubIssue>>> resultState;
 
     public GithubIssueRepository(Application application) {
         this.executor = Executors.newFixedThreadPool(10);

@@ -2,7 +2,7 @@ package com.example.vymoassignment.util;
 
 public interface Resource<T> {
     class Success<T> implements Resource<T> {
-        T data;
+        final T data;
 
         public Success(T data) {
             this.data = data;
@@ -14,7 +14,7 @@ public interface Resource<T> {
     }
 
     class Error<T> implements Resource<T> {
-        String message;
+        final String message;
 
         public Error(String message) {
             this.message = message;

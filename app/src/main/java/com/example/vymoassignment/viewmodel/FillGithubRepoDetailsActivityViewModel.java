@@ -6,7 +6,7 @@ import com.example.vymoassignment.model.GithubRepoDetails;
 
 public class FillGithubRepoDetailsActivityViewModel extends ViewModel {
 
-    private GithubRepoDetails githubRepoDetails = new GithubRepoDetails();
+    private final GithubRepoDetails githubRepoDetails = new GithubRepoDetails();
 
     public GithubRepoDetails getGithubRepoDetails() {
         return githubRepoDetails;
@@ -39,7 +39,7 @@ public class FillGithubRepoDetailsActivityViewModel extends ViewModel {
         }
 
         class Error implements ViewState {
-            private String errorMessage;
+            private final String errorMessage;
 
             public Error(String errorMessage) {
                 this.errorMessage = errorMessage;

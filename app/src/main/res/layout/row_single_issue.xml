@@ -87,7 +87,7 @@
                 tools:text="Open" />
 
             <TextView
-                android:id="@+id/creatdHeading"
+                android:id="@+id/createdHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
@@ -103,8 +103,8 @@
                 android:layout_marginStart="5dp"
                 android:text="@{githubIssue.created}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/creatdHeading"
-                app:layout_constraintTop_toTopOf="@+id/creatdHeading"
+                app:layout_constraintStart_toEndOf="@+id/createdHeading"
+                app:layout_constraintTop_toTopOf="@+id/createdHeading"
                 tools:text="Today" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

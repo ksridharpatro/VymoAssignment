@@ -44,7 +44,7 @@ public class GithubIssueRecycleAdapter extends
     }
 
     static public class ViewHolder extends RecyclerView.ViewHolder {
-        RowSingleIssueBinding itemBinding;
+        final RowSingleIssueBinding itemBinding;
 
         public ViewHolder(RowSingleIssueBinding itemView) {
             super(itemView.getRoot());

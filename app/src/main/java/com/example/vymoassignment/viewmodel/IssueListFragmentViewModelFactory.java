@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class IssueListFragmentViewModelFactory implements ViewModelProvider.Factory {
 
-    private Application applicationContext;
+    private final Application applicationContext;
 
     public IssueListFragmentViewModelFactory(Application applicationContext) {
         this.applicationContext = applicationContext;
