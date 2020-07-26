@@ -17,7 +17,7 @@ public class FillGithubRepoDetailsActivityViewModel extends ViewModel {
             if (isRepoNameValid(githubRepoDetails.getRepoName())) {
                 return new ViewState.Success();
             } else {
-                return new ViewState.Error("Invalid repoName");
+                return new ViewState.Error("Invalid Repo name");
             }
         } else {
             return new ViewState.Error("Invalid Owner name");
