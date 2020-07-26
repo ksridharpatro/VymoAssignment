@@ -10,11 +10,11 @@ import java.util.List;
 
 @Dao
 public interface GithubIssuesDao {
-    @Query("SELECT * FROM GithubIssue")
-    List<GithubIssue> getAll();
+    @Query("SELECT * FROM GithubIssue WHERE repoId = :repoId")
+    List<GithubIssue> findAllByRepoId(String repoId);
 
     @Insert
-    void insertAll(GithubIssue... issues);
+    void insertAll(List<GithubIssue> issues);
 
     @Query("DELETE FROM githubissue")
     void deleteAll();

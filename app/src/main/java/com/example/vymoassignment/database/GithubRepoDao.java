@@ -6,9 +6,12 @@ import androidx.room.Query;
 
 @Dao
 public interface GithubRepoDao {
-    @Query("SELECT * FROM GITHUBREPODETAILSCACHEENTITY WHERE repoId = :repoId")
-    GithubRepoDetailsCacheEntity getRepoById(String repoId);
+    @Query("SELECT * FROM GithubIssueReqEntity WHERE repoId = :repoId")
+    GithubIssueReqEntity getRepoById(String repoId);
 
     @Insert
-    void insert(GithubRepoDetailsCacheEntity githubRepoDetailsCacheEntity);
+    void insert(GithubIssueReqEntity githubIssueReqEntity);
+
+    @Query("DELETE FROM GithubIssueReqEntity WHERE repoId = :repoId")
+    void deleteByRepoId(String repoId);
 }

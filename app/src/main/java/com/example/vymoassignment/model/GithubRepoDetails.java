@@ -63,8 +63,4 @@ public class GithubRepoDetails extends BaseObservable implements Parcelable {
         parcel.writeString(ownerName);
         parcel.writeString(repoName);
     }
-
-    public String getRepoId() {
-        return String.format("%s_%s", ownerName, repoName);
-    }
 }

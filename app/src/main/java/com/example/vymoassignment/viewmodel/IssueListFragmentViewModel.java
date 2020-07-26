@@ -16,7 +16,7 @@ import java.util.List;
 
 public class IssueListFragmentViewModel extends AndroidViewModel {
 
-    private GithubIssueRepository githubIssueRepository = new GithubIssueRepository();
+    private GithubIssueRepository githubIssueRepository = new GithubIssueRepository(getApplication());
 
     public IssueListFragmentViewModel(@NonNull Application application) {
         super(application);
