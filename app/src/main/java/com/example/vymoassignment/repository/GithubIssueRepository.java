@@ -91,7 +91,8 @@ public class GithubIssueRepository {
         }
     }
 
-    private boolean shouldFetchIssuesFromCache(GithubRepoDetails githubRepoDetails, GithubIssueType githubIssueType) {
+    private boolean shouldFetchIssuesFromCache(GithubRepoDetails githubRepoDetails,
+                                               GithubIssueType githubIssueType) {
         GithubIssueReqEntity githubIssueReqEntity =
                 githubRepoDao.getRepoById(generateIssueReqId(githubRepoDetails, githubIssueType));
         return githubIssueReqEntity != null &&

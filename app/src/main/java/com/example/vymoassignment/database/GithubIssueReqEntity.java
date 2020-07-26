@@ -23,15 +23,7 @@ public class GithubIssueReqEntity {
         return repoId;
     }
 
-    public void setRepoId(@NotNull String repoId) {
-        this.repoId = repoId;
-    }
-
     public long getFetchTimestamp() {
         return fetchTimestamp;
-    }
-
-    public void setFetchTimestamp(long fetchTimestamp) {
-        this.fetchTimestamp = fetchTimestamp;
     }
 }

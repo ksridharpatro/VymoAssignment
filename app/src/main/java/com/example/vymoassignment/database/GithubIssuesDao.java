@@ -16,9 +16,6 @@ public interface GithubIssuesDao {
     @Insert
     void insertAll(List<GithubIssue> issues);
 
-    @Query("DELETE FROM githubissue")
-    void deleteAll();
-
     @Query("DELETE FROM githubissue WHERE repoId = :repoId")
     void deleteByRepoId(String repoId);
 }
